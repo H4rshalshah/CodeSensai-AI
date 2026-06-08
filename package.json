@@ -1,22 +1,21 @@
 {
   "name": "codesensai-ai",
-  "version": "0.0.0",
   "private": true,
+  "version": "0.0.0",
   "type": "module",
-  "homepage": "https://H4rshalshah.github.io/CodeSensai-AI/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
     "lint": "eslint .",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@google/genai": "^1.30.0",
     "@google/generative-ai": "^0.24.1",
     "@monaco-editor/react": "^4.7.0",
     "@tailwindcss/vite": "^4.1.17",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "lucide-react": "^0.554.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

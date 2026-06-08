@@ -1,49 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { BrainCircuit, Sun, Moon } from "lucide-react";
+import React from "react";
+import { BrainCircuit, Moon, Sun } from "lucide-react";
 
-const Navbar = () => {
-    const [theme, setTheme] = useState("dark");
+const Navbar = ({ theme, onThemeChange, isScrolled }) => {
+  const isDark = theme === "dark";
 
-    useEffect(() => {
-        const saved = localStorage.getItem("theme") || "dark";
-        setTheme(saved);
-        document.documentElement.setAttribute("data-theme", saved);
-    }, []);
+  return (
+    <header className={`nav ${isScrolled ? "is-scrolled" : ""}`}>
+      <a className="brand" href="#page-title" aria-label="CodeSensai AI home">
+        <span className="brand-mark">
+          <BrainCircuit size={24} />
+        </span>
+        <span className="brand-copy">
+          <strong>CodeSensai AI</strong>
+        </span>
+      </a>
 
-    const toggleTheme = () => {
-        const newTheme = theme === "dark" ? "light" : "dark";
-        setTheme(newTheme);
-        document.documentElement.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-    };
-
-    return (
-        <>
-            <div className="nav flex items-center justify-between h-[90px] bg-black"
-                style={{ padding: "0px 100px" }}>
-
-                <div className="logo flex items-center gap-[10px]">
-                    <BrainCircuit size={30} color="#9333ea" />
-                    <span className="text-4xl font-bold text-white ml-2">CodeSensai AI</span>
-
-                   <span className="text-sm ml-4 hidden md:block font-semibold" style={{ color: "#9333ea" }}>
-    Think Twice Code Once
-</span>
-
-
-                </div>
-
-                <div className="icons flex items-center gap-[20px]">
-                    <i
-                        className="cursor-pointer transition-all hover:text-[#9333ea]"
-                        onClick={toggleTheme}
-                    >
-                        {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
-                    </i>
-                </div>
-            </div>
-        </>
-    );
+      <div className="nav-actions">
+        <button
+          className="theme-button"
+          type="button"
+          onClick={() => onThemeChange(isDark ? "light" : "dark")}
+          aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
+          title={`Switch to ${isDark ? "light" : "dark"} theme`}
+        >
+          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+      </div>
+    </header>
+  );
 };
 
 export default Navbar;
