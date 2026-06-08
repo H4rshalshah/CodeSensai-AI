@@ -57,7 +57,9 @@ async function reviewWithOllama(prompt) {
 
   return data?.response?.trim();
 }
-
+app.get("/", (req, res) => {
+    res.send("CodeSensai backend is running");
+  });
 app.post("/api/review", async (req, res) => {
   try {
     const { prompt } = req.body;
