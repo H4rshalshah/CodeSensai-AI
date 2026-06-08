@@ -163,7 +163,6 @@ const App = () => {
   const [activeAction, setActiveAction] = useState("");
   const [suggestedCode, setSuggestedCode] = useState("");
   const [responseKind, setResponseKind] = useState("idle");
-  const [isNavScrolled, setIsNavScrolled] = useState(false);
   const [progressMessage, setProgressMessage] = useState("");
   const downloadLinkRef = useRef(null);
 
@@ -171,14 +170,6 @@ const App = () => {
     const savedTheme = localStorage.getItem("codesensai-theme") || "dark";
     setTheme(savedTheme);
     document.documentElement.setAttribute("data-theme", savedTheme);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => setIsNavScrolled(window.scrollY > 24);
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const stats = useMemo(() => {
@@ -380,7 +371,6 @@ const App = () => {
       <Navbar
         theme={theme}
         onThemeChange={updateTheme}
-        isScrolled={isNavScrolled}
       />
 
       <main className="workspace">
