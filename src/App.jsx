@@ -70,7 +70,7 @@ const languageByExtension = {
   cs: "csharp",
 };
 async function generateGeminiContent(prompt) {
-  const response = await fetch("https://codesensai-ai-backend.onrender.com/", {
+  const response = await fetch("https://codesensai-ai-backend.onrender.com/api/review", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
